@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import SearchBar from "./components/SearchBar";
 import WeatherCard from "./components/WeatherCard";
 import { getWeatherByCity, getWeatherByCoords } from "./services/api";
@@ -28,22 +28,23 @@ function App() {
     setLoading(false);
   };
 
-  const getLocationWeather = () => {
-    setLoading(true);
-    navigator.geolocation.getCurrentPosition(async (pos) => {
-      const data = await getWeatherByCoords(
-        pos.coords.latitude,
-        pos.coords.longitude,
-        unit
-      );
-      setWeather(data);
-      setLoading(false);
-    });
-  };
+ const getLocationWeather = useCallback(() => {
+  setLoading(true);
 
-  useEffect(() => {
-    getLocationWeather();
-  }, [unit]);
+  navigator.geolocation.getCurrentPosition(async (pos) => {
+    const data = await getWeatherByCoords(
+      pos.coords.latitude,
+      pos.coords.longitude,
+      unit
+    );
+    setWeather(data);
+    setLoading(false);
+  });
+}, [unit]);
+
+useEffect(() => {
+  getLocationWeather();
+}, [getLocationWeather]);
 
   return (
     <div className={`app ${weather?.weather[0]?.main?.toLowerCase()}`}>
