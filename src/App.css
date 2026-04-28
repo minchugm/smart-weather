@@ -1,38 +1,69 @@
-.App {
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.app {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+  padding: 40px;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
+  transition: 0.5s;
 }
 
-.App-link {
-  color: #61dafb;
+/* Dynamic backgrounds */
+.clear { background: linear-gradient(to right, #56ccf2, #2f80ed); }
+.clouds { background: linear-gradient(to right, #757f9a, #d7dde8); }
+.rain { background: linear-gradient(to right, #314755, #26a0da); }
+.haze { background: linear-gradient(to right, #3e5151, #decba4); }
+
+input {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  width: 220px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+button {
+  padding: 10px 18px;
+  margin: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #ff7e5f;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background: #feb47b;
+}
+
+.controls {
+  margin-top: 10px;
+}
+
+.card {
+  margin-top: 20px;
+  padding: 25px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 10px;
+}
+
+.error {
+  color: #ff4d4d;
+}
+
+.loading {
+  font-weight: bold;
 }
